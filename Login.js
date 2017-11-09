@@ -6,7 +6,6 @@ import Timeline from './Timeline';
 import SimpleApp from './Timeline';
 
 class Login extends Component {
-
     render() {
     const { navigate } = this.props.navigation;
     var _this = this;

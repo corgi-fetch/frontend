@@ -25,8 +25,8 @@
 //  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
   //jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"]; // comment this line
   
-  jsCodeLocation = [NSURL URLWithString:@"http://10.142.135.100:8081/index.ios.bundle?platform=ios&dev=true"]; //uncomment this line 10.142.135.100
-  
+  //jsCodeLocation = [NSURL URLWithString:@"http://10.142.135.100:8081/index.ios.bundle?platform=ios&dev=true"]; //uncomment this line 10.142.135.100
+  jsCodeLocation = [NSURL URLWithString:@"http://127.0.0.1:8081/index.ios.bundle?platform=ios&dev=true"];
   // Production
    RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"Corgo"

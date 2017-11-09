@@ -84,6 +84,7 @@ class UserProfile extends React.Component {
   	}
 
   	componentDidMount() {
+    //this.fetchUser();
     this.makeRemoteRequest();
   	}
 
@@ -96,6 +97,17 @@ class UserProfile extends React.Component {
         method: 'POST',
       })
     }
+
+    // fetchUser = () => {
+    //   const userUrl = 'https://corgoapi-v2.azurewebsites.net/api/' + global.id + '/user?userId=' + global.id;
+    //   fetch(userUrl)
+    //     .then((response) => response.json())
+    //   	.then((responseData) => {
+    //   	  global.user = responseData;
+    //   	  console.log(global.user);
+    //   	})
+    //     .done();
+    // }
 
   	makeRemoteRequest = () => {
     const { page, seed } = this.state;
@@ -135,13 +147,13 @@ class UserProfile extends React.Component {
         <View style = {{flex: 1}}>
           <List>
             <FlatList
-                data={this.state.data}
+                data={global.user.currentPosts}
                 renderItem={({ item }) => (
                 <ListItem
-                  roundAvatar
-                  title={`${item.name.first} ${item.name.last}`}
-                  subtitle={item.email}
-                  avatar={{ uri: item.picture.thumbnail }}
+                  //roundAvatar
+                  title={`${item.title}`}
+                  subtitle={item.description}
+                  //avatar={{ uri: item.picture.thumbnail }}
                 />
                 )}
             keyExtractor={item => item.email}

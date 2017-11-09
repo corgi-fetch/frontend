@@ -61,7 +61,7 @@ class Timeline extends React.Component {
       //   backgroundColor: '#9FDDED',
       // },
     title: "Timeline",
-    headerRight: <Button title ="AddPost" onPress={() =>{ navigation.navigate('AddPost'); }} />,
+    headerRight: <Button title ="Add Post" onPress={() =>{ navigation.navigate('AddPost'); }} />,
     headerLeft: <Button title = "User" onPress= {() => {navigation.navigate('UserProfile'); }}/>,
   });
 
@@ -80,12 +80,25 @@ class Timeline extends React.Component {
   }
 
   componentDidMount() {
+    this.fetchData();
+    //this.fetchUser();
     this.makeRemoteRequest();
+  }
+
+  fetchData = () => {
+    const url = 'https://corgoapi-v2.azurewebsites.net/api/master/principal';
+    fetch(url)
+      .then((response) => response.json())
+      .then((responseData) => {
+        global.id = responseData;
+        console.log(global.id);
+      })
+      .done();
   }
 
   makeRemoteRequest = () => {
     //const { page, seed } = this.state;
-    const url = 'https://corgoapi-v2.azurewebsites.net/api/1230838117060267/post';
+    const url = 'https://corgoapi-v2.azurewebsites.net/api/' + global.id + '/post';
     //const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=20`;
     this.setState({ loading: true });
     fetch(url)
@@ -181,7 +194,8 @@ const SimpleApp = StackNavigator({
   AddPost: { screen: AddPostView },
   UserProfile: {screen: UserProfile},
   Post: {screen: PostView},
-}
+},
+  {headerMode : 'none'}
 );
 
 AppRegistry.registerComponent('Corgo', () => SimpleApp);
