@@ -110,7 +110,7 @@ class Timeline extends React.Component {
           //data: page === 1 ? res.results : [...this.state.data, ...res.results],
           error: res.error || null,
           loading: false,
-          refreshing: false
+          refreshing: false,
         });
       })
       .catch(error => {
@@ -145,6 +145,7 @@ class Timeline extends React.Component {
                   <TouchableOpacity
                     onPress={() =>
                       navigate('Post', {
+                        item: item,
                         name : item.owner.name,
                         starCount : item.owner.rating,
                         price : item.payment,
