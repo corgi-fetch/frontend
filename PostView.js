@@ -119,6 +119,7 @@ class PostView extends Component {
             if(this.state.post.interestedQueue == null) {
               this.state.post.interestedQueue = [];
             }
+            console.log(JSON.stringify(global.user));
             fetch('https://corgoapi-v2.azurewebsites.net/api/' + global.id + '/post/' + this.state.post.id, {
             method: "put",
             credentials: 'include',
@@ -128,27 +129,28 @@ class PostView extends Component {
             },
 
             //make sure to serialize your JSON body
-            body: JSON.stringify({
-              //date: 7,
-              //owner: global.user,
-              //title: this.state.postTitle,
-              //description: this.state.postInfo,
-              //payment: this.state.price,
-              //interestedQueue: this.state.post.interestedQueue.push(global.user),
-              //serviceGiven: false,
-              //serviceReceived: false,
-              id: global.user.id,
-              rating: global.user.rating,
-              name: global.user.name,
-              email: global.user.email,
-              userId: global.user.userId,
-              postHistory: global.user.postHistory,
-              currentPosts: global.user.currentPosts,
-              currentJobs: global.user.currentJobs,
-              creditCardNumber: global.user.creditCardNumber,
-              bankAccount: global.user.bankAccount,
-              groups: null,
-            })
+            body: JSON.stringify(global.user)
+            // body: JSON.stringify({
+            //   //date: 7,
+            //   //owner: global.user,
+            //   //title: this.state.postTitle,
+            //   //description: this.state.postInfo,
+            //   //payment: this.state.price,
+            //   //interestedQueue: this.state.post.interestedQueue.push(global.user),
+            //   //serviceGiven: false,
+            //   //serviceReceived: false,
+            //   id: global.user.id,
+            //   rating: global.user.rating,
+            //   name: global.user.name,
+            //   email: global.user.email,
+            //   userId: global.user.userId,
+            //   postHistory: global.user.postHistory,
+            //   currentPosts: global.user.currentPosts,
+            //   currentJobs: global.user.currentJobs,
+            //   creditCardNumber: global.user.creditCardNumber,
+            //   bankAccount: global.user.bankAccount,
+            //   groups: null,
+            // })
           })
           .then( (response) => {
             console.log(response);

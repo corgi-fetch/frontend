@@ -41,10 +41,11 @@ class SimpleLogin extends Component {
         source={{uri: 'http://corgoapi-v2.azurewebsites.net/login/facebook'}}
         style={{marginTop: 20}}
         onNavigationStateChange={(e) => {
+          console.log(e.url);
           const end_url = 'https://corgoapi-v2.azurewebsites.net/api/1230838117060267/post';
-           if(e.url.indexOf(end_url) > -1) {
+           //if(e.url.indexOf(end_url) > -1) {
              navigate('Timeline')
-           }
+           //}
           /** put your comdition here based here and close webview.
           Like if(e.url.indexOf("end_url") > -1)
           Then close webview
